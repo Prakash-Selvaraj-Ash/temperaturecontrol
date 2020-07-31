@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eMTE.Common.Domain", "..\eM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Common.Repository.Contracts", "..\eMTE.Common.Repository.Contracts\eMTE.Common.Repository.Contracts.csproj", "{CB19B505-5AD6-48CB-8490-EA382950F64F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Temperature.Repository", "..\eMTE.Temperature.Repository\eMTE.Temperature.Repository.csproj", "{D97C3FC3-5E2E-4848-A8A2-7803316C366A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Temperature.Repository.Contracts", "..\eMTE.Temperature.Repository\eMTE.Temperature.Repository.Contracts.csproj", "{D97C3FC3-5E2E-4848-A8A2-7803316C366A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
