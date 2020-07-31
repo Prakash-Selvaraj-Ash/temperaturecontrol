@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "eMTE.Common.Repository.Contracts/1.0.0": {
+        "runtime": {
+          "eMTE.Common.Repository.Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "eMTE.Common.Repository.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
