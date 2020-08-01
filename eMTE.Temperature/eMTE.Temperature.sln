@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D129D1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Temperature.DataAccess", "..\eMTE.Temperature.DataAccess\eMTE.Temperature.DataAccess.csproj", "{18F12FE1-95D7-492E-B868-1C0BB963D3AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Temperature.Repository.Implementation", "eMTE.Temperature.Repository.Implementation\eMTE.Temperature.Repository.Implementation.csproj", "{6BBF148F-21A2-453D-BD60-377A172711C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Temperatuer.BusinessLayer", "eMTE.Temperatuer.BusinessLayer\eMTE.Temperatuer.BusinessLayer.csproj", "{FC2D034F-4A0C-4666-B6F8-88FC67D0D2AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{18F12FE1-95D7-492E-B868-1C0BB963D3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18F12FE1-95D7-492E-B868-1C0BB963D3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18F12FE1-95D7-492E-B868-1C0BB963D3AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BBF148F-21A2-453D-BD60-377A172711C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BBF148F-21A2-453D-BD60-377A172711C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BBF148F-21A2-453D-BD60-377A172711C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BBF148F-21A2-453D-BD60-377A172711C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC2D034F-4A0C-4666-B6F8-88FC67D0D2AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC2D034F-4A0C-4666-B6F8-88FC67D0D2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC2D034F-4A0C-4666-B6F8-88FC67D0D2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC2D034F-4A0C-4666-B6F8-88FC67D0D2AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

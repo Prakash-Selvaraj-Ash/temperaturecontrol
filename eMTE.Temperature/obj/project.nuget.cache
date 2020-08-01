@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dFkyxkk/AkVfFASYkULR9hu7K3jCZ9mGtIEGDoaxo7dGcqLNEQWlUv84qCrK5TbGP8CcI1Tqd/GjHns4e/aK7A==",
+  "dgSpecHash": "X4UDvPVH32uKJnAvo1abkG7B02dT6SnDxc2+YJE5Esn2CSoLHzqHEcxgJhlaf4+8MLheFtEzRHuWtrFL0gIEmw==",
   "success": true,
-  "projectFilePath": "C:\\Thor\\Dev\\dotnet\\temperaturecontrol\\eMTE.Temperature\\eMTE.Temperature.csproj",
+  "projectFilePath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperature/eMTE.Temperature.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

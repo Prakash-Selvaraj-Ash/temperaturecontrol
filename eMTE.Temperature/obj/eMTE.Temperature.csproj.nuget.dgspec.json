@@ -1,30 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Thor\\Dev\\dotnet\\temperaturecontrol\\eMTE.Temperature\\eMTE.Temperature.csproj": {}
+    "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperature/eMTE.Temperature.csproj": {}
   },
   "projects": {
-    "C:\\Thor\\Dev\\dotnet\\temperaturecontrol\\eMTE.Temperature\\eMTE.Temperature.csproj": {
+    "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperature/eMTE.Temperature.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Thor\\Dev\\dotnet\\temperaturecontrol\\eMTE.Temperature\\eMTE.Temperature.csproj",
+        "projectUniqueName": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperature/eMTE.Temperature.csproj",
         "projectName": "eMTE.Temperature",
-        "projectPath": "C:\\Thor\\Dev\\dotnet\\temperaturecontrol\\eMTE.Temperature\\eMTE.Temperature.csproj",
-        "packagesPath": "C:\\Users\\Prakash\\.nuget\\packages\\",
-        "outputPath": "C:\\Thor\\Dev\\dotnet\\temperaturecontrol\\eMTE.Temperature\\obj\\",
+        "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperature/eMTE.Temperature.csproj",
+        "packagesPath": "/Users/prakashselvaraj/.nuget/packages/",
+        "outputPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperature/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Prakash\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/prakashselvaraj/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.302/RuntimeIdentifierGraph.json"
         }
       }
     }

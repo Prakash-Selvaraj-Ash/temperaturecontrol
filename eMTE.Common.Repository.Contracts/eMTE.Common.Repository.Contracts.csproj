@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\eMTE.Common.Domain\eMTE.Common.Domain.csproj" />
+    <ProjectReference Include="..\eMTE.Common.DataAccess\eMTE.Common.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
