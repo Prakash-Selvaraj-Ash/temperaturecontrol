@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eMTE.Common.DataAccess\eMTE.Common.DataAccess.csproj" />
+    <ProjectReference Include="..\eMTE.Common.Domain\eMTE.Common.Domain.csproj" />
+    <ProjectReference Include="..\eMTE.Temperature.Domain\eMTE.Temperature.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
