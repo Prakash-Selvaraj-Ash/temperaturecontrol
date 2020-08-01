@@ -12,5 +12,9 @@ namespace eMTE.Temperature.Domain
         public Guid TeamManagerId { get; set; }
         [ForeignKey("TeamManagerId")]
         public User TeamManager { get; set; }
+        public string TeamDescription { get; set; }
+        public string DisplayPicture { get; set; }
+        public bool IsActive { get; set; }
+        public Guid OrganizationId { get; set; }
     }
 }
