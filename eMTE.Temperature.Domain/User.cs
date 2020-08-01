@@ -7,6 +7,7 @@ namespace eMTE.Temperature.Domain
     {
         public Guid Id { get; set; }
         public Guid OrganizationId { get; set; }
+        public bool IsOrganizationAdmin { get; set; }
         public string UserId { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }

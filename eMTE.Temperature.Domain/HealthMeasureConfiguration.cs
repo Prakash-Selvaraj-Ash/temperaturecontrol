@@ -10,6 +10,7 @@ namespace eMTE.Temperature.Domain
         public Guid Id { get; set; }
         public Guid OrganizationId { get; set; }
         public bool IsTemperatureMandate { get; set; }
+        public string CelciusOrFarenheat { get; set; }
         public bool IsCoughMandate { get; set; }
         public bool IsSneezingMandate { get; set; }
         public bool IsRunnyNoseMandate { get; set; }
