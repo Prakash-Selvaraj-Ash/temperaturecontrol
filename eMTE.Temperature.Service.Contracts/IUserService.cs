@@ -1,4 +1,4 @@
-﻿using eMTE.Temperatuer.BusinessLayer.DTO.User.Request;
+﻿using eMTE.Temperature.BusinessLayer.DTO.User.Request;
 
 namespace eMTE.Temperature.Service.Contracts
 {

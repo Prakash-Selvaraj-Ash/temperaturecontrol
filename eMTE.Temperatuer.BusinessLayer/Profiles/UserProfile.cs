@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using eMTE.Temperature.Domain;
 using eMTE.Temperature.BusinessLayer.DTO.User.Request;
 

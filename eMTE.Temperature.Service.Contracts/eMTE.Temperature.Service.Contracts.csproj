@@ -6,6 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\eMTE.Common.Authentication\eMTE.Common.Authentication.csproj" />
-    <ProjectReference Include="..\eMTE.Temperatuer.BusinessLayer\eMTE.Temperatuer.BusinessLayer.csproj" />
+    <ProjectReference Include="..\eMTE.Temperatuer.BusinessLayer\eMTE.Temperature.BusinessLayer.csproj" />
   </ItemGroup>
 </Project>
