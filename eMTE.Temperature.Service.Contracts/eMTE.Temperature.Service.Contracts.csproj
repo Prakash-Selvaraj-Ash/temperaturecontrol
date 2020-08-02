@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\eMTE.Common.Authentication\eMTE.Common.Authentication.csproj" />
+    <ProjectReference Include="..\eMTE.Temperatuer.BusinessLayer\eMTE.Temperatuer.BusinessLayer.csproj" />
+  </ItemGroup>
+</Project>

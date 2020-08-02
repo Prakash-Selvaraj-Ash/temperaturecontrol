@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using eMTE.Common.Domain;
 
 namespace eMTE.Temperature.Domain
 {
@@ -18,5 +15,6 @@ namespace eMTE.Temperature.Domain
         public bool IsOxygenSaturationMandate { get; set; }
         public bool IsHeatRateMandate { get; set; }
         public bool IsImageWithPPEMandate { get; set; }
+        public int MeasureCount { get; set; }
     }
 }

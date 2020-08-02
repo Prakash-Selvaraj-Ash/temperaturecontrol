@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\eMTE.Temperature.Repository\eMTE.Temperature.Repository.Contracts.csproj" />
+    <ProjectReference Include="..\eMTE.Temperatuer.BusinessLayer\eMTE.Temperatuer.BusinessLayer.csproj" />
+    <ProjectReference Include="..\eMTE.Temperature.Service.Contracts\eMTE.Temperature.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\eMTE.Common.Authentication\eMTE.Common.Authentication.csproj" />
+    <ProjectReference Include="..\..\eMTE.Common.Domain\eMTE.Common.Domain.csproj" />
+    <ProjectReference Include="..\..\eMTE.Temperature.Domain\eMTE.Temperature.Domain.csproj" />
+    <ProjectReference Include="..\..\eMTE.Common.Repository.Contracts\eMTE.Common.Repository.Contracts.csproj" />
+  </ItemGroup>
+</Project>

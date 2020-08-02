@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 using eMTE.Common.Domain;
 
 namespace eMTE.Temperature.Domain
 {
-    public class Team : IDomain, IWithId
+    public class Team : WithAuditFields, IDomain, IWithId
     {
         public Guid Id { get; set; }
         public Guid TeamManagerId { get; set; }
@@ -16,5 +14,7 @@ namespace eMTE.Temperature.Domain
         public string DisplayPicture { get; set; }
         public bool IsActive { get; set; }
         public Guid OrganizationId { get; set; }
+        [ForeignKey("OrganizationId")]
+        public Organization Organization { get; set; }
     }
 }

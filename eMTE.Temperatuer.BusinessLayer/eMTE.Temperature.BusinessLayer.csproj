@@ -10,5 +10,15 @@
     <Folder Include="DTO\Organization\Request\" />
     <Folder Include="DTO\User\" />
     <Folder Include="DTO\User\Request\" />
+    <Folder Include="DTO\Team\" />
+    <Folder Include="DTO\Team\Request\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Profiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\eMTE.Temperature.Domain\eMTE.Temperature.Domain.csproj" />
   </ItemGroup>
 </Project>
