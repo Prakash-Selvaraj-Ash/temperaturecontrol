@@ -1,17 +1,18 @@
-﻿using eMTE.Common.Domain;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using eMTE.Common.DataAccess;
+using eMTE.Common.Domain;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace eMTE.Common.DataAccess
+namespace eMTE.Temperature.DataAccess
 {
-    public class DbConnector : IQueryableConnector
+    public class TemperatureDbConnector : IQueryableConnector
     {
-        private readonly BaseDbContext _appDbContext;
-        public DbConnector(BaseDbContext appDbContext)
+        private readonly AppDbContext _appDbContext;
+        public TemperatureDbConnector(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }

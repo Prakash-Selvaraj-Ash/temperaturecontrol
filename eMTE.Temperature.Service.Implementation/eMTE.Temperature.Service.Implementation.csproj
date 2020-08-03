@@ -12,5 +12,10 @@
     <ProjectReference Include="..\eMTE.Temperature.Repository\eMTE.Temperature.Repository.Contracts.csproj" />
     <ProjectReference Include="..\eMTE.Temperatuer.BusinessLayer\eMTE.Temperature.BusinessLayer.csproj" />
     <ProjectReference Include="..\eMTE.Temperature.Service.Contracts\eMTE.Temperature.Service.Contracts.csproj" />
+    <ProjectReference Include="..\eMTE.Temperature.DataAccess\eMTE.Temperature.DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
   </ItemGroup>
 </Project>

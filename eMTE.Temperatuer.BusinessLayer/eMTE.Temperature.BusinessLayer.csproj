@@ -14,9 +14,11 @@
     <Folder Include="DTO\Team\Request\" />
     <Folder Include="Extensions\" />
     <Folder Include="Profiles\" />
+    <Folder Include="DTO\Team\Response\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eMTE.Temperature.Domain\eMTE.Temperature.Domain.csproj" />

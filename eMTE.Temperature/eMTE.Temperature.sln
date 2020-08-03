@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Temperature.Service.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Temperature.Service.Implementation", "..\eMTE.Temperature.Service.Implementation\eMTE.Temperature.Service.Implementation.csproj", "{49DECE67-0AE1-46F2-AA43-7880B55FD177}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Temperature.AppControllers", "..\eMTE.Temperature.AppControllers\eMTE.Temperature.AppControllers.csproj", "{8A1D2187-1A43-4948-8A7A-50236E8C4296}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{49DECE67-0AE1-46F2-AA43-7880B55FD177}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49DECE67-0AE1-46F2-AA43-7880B55FD177}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49DECE67-0AE1-46F2-AA43-7880B55FD177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A1D2187-1A43-4948-8A7A-50236E8C4296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A1D2187-1A43-4948-8A7A-50236E8C4296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A1D2187-1A43-4948-8A7A-50236E8C4296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A1D2187-1A43-4948-8A7A-50236E8C4296}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
