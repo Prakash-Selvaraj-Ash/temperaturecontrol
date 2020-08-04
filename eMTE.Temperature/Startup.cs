@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using eMTE.Common.Authentication;
 using eMTE.Common.DataAccess;
+using eMTE.Common.Tools.Contract;
+using eMTE.Common.Tools.Implementation;
 using eMTE.Temperature.BusinessLayer;
 using eMTE.Temperature.DataAccess;
 using eMTE.Temperature.DataAccess.Services;
@@ -14,6 +16,7 @@ using eMTE.Temperature.Service.Implementation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +25,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using static eMTE.Temperature.BusinessLayer.Constants.Constants;
 
 namespace eMTE.Temperature
 {
@@ -44,7 +48,7 @@ namespace eMTE.Temperature
             services.AddDbContext<AppDbContext>(builder =>
                    builder.UseMySql("Server=localhost;user=root;password=17031991AE#;Database=TemperatureControlDB;", sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
 
-            var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my temperature security key"));
+            var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Secret.SecretKey));
 
             services.AddAuthentication(options =>
             {
@@ -74,6 +78,10 @@ namespace eMTE.Temperature
             ServiceRegistrar.Register(services);
             BusinessRegistrar.Register(services);
 
+
+            services.AddTransient<IDateTimeToolService, DateTimeToolService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddTransient<IQueryableConnector, TemperatureDbConnector>();
             services.AddTransient<IEntityService, EntityService>();
         }
@@ -97,9 +105,6 @@ namespace eMTE.Temperature
                 .AllowAnyMethod()
                 .AllowAnyHeader();
             });
-
-
-            //app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

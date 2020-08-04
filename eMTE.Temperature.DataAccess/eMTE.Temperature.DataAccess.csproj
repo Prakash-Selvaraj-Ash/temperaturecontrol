@@ -8,6 +8,8 @@
     <ProjectReference Include="..\eMTE.Common.Domain\eMTE.Common.Domain.csproj" />
     <ProjectReference Include="..\eMTE.Temperature.Domain\eMTE.Temperature.Domain.csproj" />
     <ProjectReference Include="..\eMTE.Common.DataAccess\eMTE.Common.DataAccess.csproj" />
+    <ProjectReference Include="..\eMTE.Common.Authentication\eMTE.Common.Authentication.csproj" />
+    <ProjectReference Include="..\eMTE.Common.Tools.Contract\eMTE.Common.Tools.Contract.csproj" />
   </ItemGroup>
 
   <ItemGroup>

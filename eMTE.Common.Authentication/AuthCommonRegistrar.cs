@@ -8,6 +8,7 @@ namespace eMTE.Common.Authentication
         public static void Register(IServiceCollection services)
         {
             services.AddTransient<IAuthenticator, Authenticator>();
+            services.AddTransient<IUserResolver, UserResolver>();
         }
     }
 }

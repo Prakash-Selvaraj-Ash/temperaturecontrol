@@ -40,6 +40,10 @@
               "target": "Package",
               "version": "[1.1.8, )"
             },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[3.1.6, )"
@@ -245,6 +249,110 @@
         }
       }
     },
+    "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj",
+        "projectName": "eMTE.Common.Tools.Contract",
+        "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj",
+        "packagesPath": "/Users/prakashselvaraj/.nuget/packages/",
+        "outputPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/prakashselvaraj/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Implementation/eMTE.Common.Tools.Implementation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Implementation/eMTE.Common.Tools.Implementation.csproj",
+        "projectName": "eMTE.Common.Tools.Implementation",
+        "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Implementation/eMTE.Common.Tools.Implementation.csproj",
+        "packagesPath": "/Users/prakashselvaraj/.nuget/packages/",
+        "outputPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Implementation/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/prakashselvaraj/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj": {
+                "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperatuer.BusinessLayer/eMTE.Temperature.BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -397,11 +505,17 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
+              "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Authentication/eMTE.Common.Authentication.csproj": {
+                "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Authentication/eMTE.Common.Authentication.csproj"
+              },
               "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.DataAccess/eMTE.Common.DataAccess.csproj": {
                 "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.DataAccess/eMTE.Common.DataAccess.csproj"
               },
               "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Domain/eMTE.Common.Domain.csproj": {
                 "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Domain/eMTE.Common.Domain.csproj"
+              },
+              "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj": {
+                "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj"
               },
               "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperature.Domain/eMTE.Temperature.Domain.csproj": {
                 "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperature.Domain/eMTE.Temperature.Domain.csproj"
@@ -780,6 +894,12 @@
               },
               "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Repository.Contracts/eMTE.Common.Repository.Contracts.csproj": {
                 "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Repository.Contracts/eMTE.Common.Repository.Contracts.csproj"
+              },
+              "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj": {
+                "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj"
+              },
+              "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Implementation/eMTE.Common.Tools.Implementation.csproj": {
+                "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Implementation/eMTE.Common.Tools.Implementation.csproj"
               },
               "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperatuer.BusinessLayer/eMTE.Temperature.BusinessLayer.csproj": {
                 "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperatuer.BusinessLayer/eMTE.Temperature.BusinessLayer.csproj"

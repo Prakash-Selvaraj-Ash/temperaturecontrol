@@ -28,9 +28,12 @@ namespace eMTE.Temperature.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Organizations");
                 });
@@ -41,14 +44,11 @@ namespace eMTE.Temperature.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid?>("CreatedById")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<Guid>("CretedById")
-                        .HasColumnType("char(36)");
 
                     b.Property<string>("DisplayPicture")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -64,7 +64,7 @@ namespace eMTE.Temperature.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<Guid>("OrganizationId")
                         .HasColumnType("char(36)");
@@ -80,6 +80,9 @@ namespace eMTE.Temperature.Migrations
                     b.HasIndex("CreatedById");
 
                     b.HasIndex("ModifiedById");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.HasIndex("OrganizationId");
 
@@ -102,9 +105,10 @@ namespace eMTE.Temperature.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeamId");
-
                     b.HasIndex("UserId");
+
+                    b.HasIndex("TeamId", "UserId")
+                        .IsUnique();
 
                     b.ToTable("TeamUserMaps");
                 });
@@ -175,7 +179,9 @@ namespace eMTE.Temperature.Migrations
                 {
                     b.HasOne("eMTE.Temperature.Domain.User", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("eMTE.Temperature.Domain.User", "ModifiedBy")
                         .WithMany()

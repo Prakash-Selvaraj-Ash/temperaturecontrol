@@ -11,6 +11,7 @@ using eMTE.Temperature.Domain;
 using eMTE.Temperature.Service.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using static eMTE.Temperature.BusinessLayer.Constants.Constants;
 
 namespace eMTE.Temperature.Service.Implementation
 {
@@ -45,20 +46,14 @@ namespace eMTE.Temperature.Service.Implementation
         private string generateJwtToken(Guid userId, Guid organizationId)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("my temperature security key"); // this should be a long string due to limitation of SymmetricSecurityKey Defaults.
+            var key = Encoding.ASCII.GetBytes(Secret.SecretKey); // this should be a long string due to limitation of SymmetricSecurityKey Defaults.
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
-                new Claim("OrganizationId", organizationId.ToString())
+                new Claim(Claims.Organization, organizationId.ToString())
             };
             var signInCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddMinutes(15),
-                SigningCredentials = signInCredentials
-            };
-            var token = new JwtSecurityToken(claims: claims, signingCredentials: signInCredentials);
+            var token = new JwtSecurityToken(claims: claims, signingCredentials: signInCredentials, expires: DateTime.UtcNow.AddMinutes(30));
             return tokenHandler.WriteToken(token);
         }
 

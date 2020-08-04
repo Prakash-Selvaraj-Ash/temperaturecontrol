@@ -6,7 +6,7 @@ namespace eMTE.Temperature.Domain
 {
     public class WithAuditFields : IWithAuditFields
     {
-        public Guid CretedById { get; set; }
+        public Guid CreatedById { get; set; }
         [ForeignKey("CreatedById")]
         public User CreatedBy { get; set; }
 

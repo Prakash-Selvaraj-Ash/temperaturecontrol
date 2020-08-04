@@ -241,7 +241,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Html.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http/2.2.0": {
+      "Microsoft.AspNetCore.Http/2.2.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
@@ -3153,6 +3153,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Isopoh.Cryptography.Argon2": "1.1.8",
+          "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.6"
         },
         "compile": {
@@ -3203,6 +3204,29 @@
           "bin/placeholder/eMTE.Common.Repository.Contracts.dll": {}
         }
       },
+      "eMTE.Common.Tools.Contract/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/eMTE.Common.Tools.Contract.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/eMTE.Common.Tools.Contract.dll": {}
+        }
+      },
+      "eMTE.Common.Tools.Implementation/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "eMTE.Common.Tools.Contract": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/eMTE.Common.Tools.Implementation.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/eMTE.Common.Tools.Implementation.dll": {}
+        }
+      },
       "eMTE.Temperature.AppControllers/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -3238,8 +3262,10 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "eMTE.Common.Authentication": "1.0.0",
           "eMTE.Common.DataAccess": "1.0.0",
           "eMTE.Common.Domain": "1.0.0",
+          "eMTE.Common.Tools.Contract": "1.0.0",
           "eMTE.Temperature.Domain": "1.0.0"
         },
         "compile": {
@@ -3609,16 +3635,16 @@
         "microsoft.aspnetcore.html.abstractions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http/2.2.0": {
-      "sha512": "YogBSMotWPAS/X5967pZ+yyWPQkThxhmzAwyCHCSSldzYBkW5W5d6oPfBaPqQOnSHYTpSOSOkpZoAce0vwb6+A==",
+    "Microsoft.AspNetCore.Http/2.2.2": {
+      "sha512": "BAibpoItxI5puk7YJbIGj95arZueM8B8M5xT1fXBn3hb3L2G3ucrZcYXv1gXdaroLbntUs8qeV8iuBrpjQsrKw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http/2.2.0",
+      "path": "microsoft.aspnetcore.http/2.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.xml",
-        "microsoft.aspnetcore.http.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
         "microsoft.aspnetcore.http.nuspec"
       ]
     },
@@ -9854,6 +9880,16 @@
       "path": "../eMTE.Common.Repository.Contracts/eMTE.Common.Repository.Contracts.csproj",
       "msbuildProject": "../eMTE.Common.Repository.Contracts/eMTE.Common.Repository.Contracts.csproj"
     },
+    "eMTE.Common.Tools.Contract/1.0.0": {
+      "type": "project",
+      "path": "../eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj",
+      "msbuildProject": "../eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj"
+    },
+    "eMTE.Common.Tools.Implementation/1.0.0": {
+      "type": "project",
+      "path": "../eMTE.Common.Tools.Implementation/eMTE.Common.Tools.Implementation.csproj",
+      "msbuildProject": "../eMTE.Common.Tools.Implementation/eMTE.Common.Tools.Implementation.csproj"
+    },
     "eMTE.Temperature.AppControllers/1.0.0": {
       "type": "project",
       "path": "../eMTE.Temperature.AppControllers/eMTE.Temperature.AppControllers.csproj",
@@ -9906,6 +9942,8 @@
       "eMTE.Common.DataAccess >= 1.0.0",
       "eMTE.Common.Domain >= 1.0.0",
       "eMTE.Common.Repository.Contracts >= 1.0.0",
+      "eMTE.Common.Tools.Contract >= 1.0.0",
+      "eMTE.Common.Tools.Implementation >= 1.0.0",
       "eMTE.Temperature.AppControllers >= 1.0.0",
       "eMTE.Temperature.BusinessLayer >= 1.0.0",
       "eMTE.Temperature.DataAccess >= 1.0.0",
@@ -9951,6 +9989,12 @@
             },
             "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Repository.Contracts/eMTE.Common.Repository.Contracts.csproj": {
               "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Repository.Contracts/eMTE.Common.Repository.Contracts.csproj"
+            },
+            "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj": {
+              "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Contract/eMTE.Common.Tools.Contract.csproj"
+            },
+            "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Implementation/eMTE.Common.Tools.Implementation.csproj": {
+              "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Common.Tools.Implementation/eMTE.Common.Tools.Implementation.csproj"
             },
             "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperatuer.BusinessLayer/eMTE.Temperature.BusinessLayer.csproj": {
               "projectPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperatuer.BusinessLayer/eMTE.Temperature.BusinessLayer.csproj"

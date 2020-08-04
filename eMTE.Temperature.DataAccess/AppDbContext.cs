@@ -1,5 +1,4 @@
-﻿using eMTE.Common.DataAccess;
-using eMTE.Temperature.Domain;
+﻿using eMTE.Temperature.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace eMTE.Temperature.DataAccess
@@ -11,5 +10,25 @@ namespace eMTE.Temperature.DataAccess
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<TeamUserMap> TeamUserMaps { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Team>(entity =>
+            {
+                entity.HasIndex(e => e.Name).IsUnique();
+            });
+
+            modelBuilder.Entity<Organization>(entity =>
+            {
+                entity.HasIndex(e => e.Name).IsUnique();
+            });
+
+            modelBuilder.Entity<TeamUserMap>(entity =>
+            {
+                entity.HasIndex(e => new { e.TeamId, e.UserId }).IsUnique();
+            });
+        }
     }
 }

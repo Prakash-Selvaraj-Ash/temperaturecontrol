@@ -7,6 +7,7 @@ using eMTE.Temperature.BusinessLayer.DTO.Team.Request;
 using eMTE.Temperature.Service.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static eMTE.Temperature.BusinessLayer.Constants.Constants;
 
 namespace eMTE.Temperature.AppControllers
 {
@@ -27,7 +28,7 @@ namespace eMTE.Temperature.AppControllers
             var claims = HttpContext.User.Claims;
             await _teamService.CreateAsync(
                 Guid.Parse(claims.Single(claim => claim.Type == ClaimTypes.NameIdentifier).Value),
-                Guid.Parse(claims.Single(claim => claim.Type == "OrganizationId").Value),
+                Guid.Parse(claims.Single(claim => claim.Type == Claims.Organization).Value),
                 createTeam,
                 cancellationToken);
 
@@ -43,6 +44,36 @@ namespace eMTE.Temperature.AppControllers
             var teams = await _teamService.GetManagerTeams(managerId, cancellationToken);
 
             return new OkObjectResult(teams);
+        }
+
+        [Authorize]
+        [HttpGet("allTeams")]
+        public async Task<ActionResult> GetAllTeams(CancellationToken cancellationToken = default)
+        {
+            var claims = HttpContext.User.Claims;
+            var organizationId = Guid.Parse(claims.Single(claim => claim.Type == Claims.Organization).Value);
+            var teams = await _teamService.GetAllTeams(organizationId, cancellationToken);
+
+            return new OkObjectResult(teams);
+        }
+
+        [Authorize]
+        [HttpPut("assign/{teamId}")]
+        public async Task<ActionResult> AssignTeam(Guid teamId, CancellationToken cancellationToken = default)
+        {
+            var claims = HttpContext.User.Claims;
+            var userId = Guid.Parse(claims.Single(claim => claim.Type == ClaimTypes.NameIdentifier).Value);
+            await _teamService.AssignTeam(userId, teamId, cancellationToken);
+
+            return Ok();
+        }
+
+        [Authorize]
+        [HttpPut("remove/{userId}")]
+        public async Task<IActionResult> RemoveMember(Guid teamId, Guid userId, CancellationToken cancellationToken = default)
+        {
+            await _teamService.RemoveMember(teamId, userId, cancellationToken);
+            return Ok();
         }
     }
 }

@@ -7,6 +7,7 @@ using eMTE.Temperature.BusinessLayer.Extensions;
 using eMTE.Temperature.DataAccess.Services;
 using eMTE.Temperature.Domain;
 using eMTE.Temperature.Service.Contracts;
+using static eMTE.Temperature.BusinessLayer.Constants.Constants;
 
 namespace eMTE.Temperature.Service.Implementation
 {
@@ -36,7 +37,7 @@ namespace eMTE.Temperature.Service.Implementation
             user.OrganizationId = organization.Id;
 
 
-            var authModel = _authenticator.Create("temperature", createOrganization.Password);
+            var authModel = _authenticator.Create(Secret.PasswordKey, createOrganization.Password);
             user.Hash = authModel.Hash;
             user.IsOrganizationAdmin = true;
 
