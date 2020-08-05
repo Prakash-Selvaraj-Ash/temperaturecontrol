@@ -21,6 +21,34 @@ namespace eMTE.Temperature.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HealthMeasureConfigurations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    OrganizationId = table.Column<Guid>(nullable: false),
+                    IsTemperatureMandate = table.Column<bool>(nullable: false),
+                    TemperatureUnit = table.Column<string>(nullable: false),
+                    IsCoughMandate = table.Column<bool>(nullable: false),
+                    IsSneezingMandate = table.Column<bool>(nullable: false),
+                    IsRunnyNoseMandate = table.Column<bool>(nullable: false),
+                    IsShortnessBreathMandate = table.Column<bool>(nullable: false),
+                    IsOxygenSaturationMandate = table.Column<bool>(nullable: false),
+                    IsHeatRateMandate = table.Column<bool>(nullable: false),
+                    IsImageWithPPEMandate = table.Column<bool>(nullable: false),
+                    MeasureCount = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HealthMeasureConfigurations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HealthMeasureConfigurations_Organizations_OrganizationId",
+                        column: x => x.OrganizationId,
+                        principalTable: "Organizations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -48,6 +76,34 @@ namespace eMTE.Temperature.Migrations
                         name: "FK_Users_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DayMeasures",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    OrganizationId = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false),
+                    NotedDate = table.Column<DateTime>(nullable: false),
+                    Intime = table.Column<string>(nullable: true),
+                    OutTime = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DayMeasures", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DayMeasures_Organizations_OrganizationId",
+                        column: x => x.OrganizationId,
+                        principalTable: "Organizations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DayMeasures_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -98,6 +154,34 @@ namespace eMTE.Temperature.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HealthMeasures",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Temperature = table.Column<double>(nullable: false),
+                    TemperatureUnit = table.Column<string>(nullable: false),
+                    Cough = table.Column<bool>(nullable: false),
+                    Sneezing = table.Column<bool>(nullable: false),
+                    RunnyNose = table.Column<bool>(nullable: false),
+                    ShortnessBreath = table.Column<bool>(nullable: false),
+                    OxygenSaturation = table.Column<string>(nullable: true),
+                    HeatRate = table.Column<string>(nullable: true),
+                    ImageWithPPE = table.Column<string>(nullable: true),
+                    UpdateDateTime = table.Column<DateTime>(nullable: false),
+                    DayMeasureId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HealthMeasures", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HealthMeasures_DayMeasures_DayMeasureId",
+                        column: x => x.DayMeasureId,
+                        principalTable: "DayMeasures",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TeamUserMaps",
                 columns: table => new
                 {
@@ -121,6 +205,28 @@ namespace eMTE.Temperature.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DayMeasures_OrganizationId",
+                table: "DayMeasures",
+                column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DayMeasures_UserId_NotedDate",
+                table: "DayMeasures",
+                columns: new[] { "UserId", "NotedDate" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HealthMeasureConfigurations_OrganizationId",
+                table: "HealthMeasureConfigurations",
+                column: "OrganizationId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HealthMeasures_DayMeasureId",
+                table: "HealthMeasures",
+                column: "DayMeasureId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Organizations_Name",
@@ -174,7 +280,16 @@ namespace eMTE.Temperature.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "HealthMeasureConfigurations");
+
+            migrationBuilder.DropTable(
+                name: "HealthMeasures");
+
+            migrationBuilder.DropTable(
                 name: "TeamUserMaps");
+
+            migrationBuilder.DropTable(
+                name: "DayMeasures");
 
             migrationBuilder.DropTable(
                 name: "Teams");

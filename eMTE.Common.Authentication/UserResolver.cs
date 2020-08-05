@@ -13,6 +13,12 @@ namespace eMTE.Common.Authentication
             _httpContextAccessor = httpContextAccessor;
         }
 
+        public string GetClaimIdentifierValue(string identifier)
+        {
+            var claim = _httpContextAccessor.HttpContext.User.Claims.Single(claim => claim.Type == identifier);
+            return claim.Value;
+        }
+
         public string GetUserId()
         {
             var userId = _httpContextAccessor.HttpContext.User.Claims.Single(claim => claim.Type == ClaimTypes.NameIdentifier);

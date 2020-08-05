@@ -45,10 +45,13 @@ namespace eMTE.Temperature.DataAccess.Services
         private void ConsiderSetAuditFields()
         {
             var entries = _context.ChangeTracker.Entries().Where(entry => entry.Entity is IWithAuditFields);
+            
+            if (!entries.Any()) { return;  }
+
             var userId = Guid.Parse(_userResolver.GetUserId());
             foreach (var entry in entries)
             {
-                var auditFieldEntity = entry as IWithAuditFields;
+                var auditFieldEntity = entry.Entity as IWithAuditFields;
                 if(auditFieldEntity.CreatedById == Guid.Empty)
                 {
                     auditFieldEntity.CreatedById = userId;

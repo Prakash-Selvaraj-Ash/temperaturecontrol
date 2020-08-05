@@ -15,6 +15,7 @@ namespace eMTE.Temperature.BusinessLayer
                 mc.AddProfile(new OrganizationProfile());
                 mc.AddProfile(new TeamProfile()); 
                 mc.AddProfile(new UserProfile());
+                mc.AddProfile(new HealthMeasureProfile());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();

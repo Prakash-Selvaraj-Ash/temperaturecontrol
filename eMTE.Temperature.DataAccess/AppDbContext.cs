@@ -10,6 +10,9 @@ namespace eMTE.Temperature.DataAccess
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<TeamUserMap> TeamUserMaps { get; set; }
+        public DbSet<DayMeasure> DayMeasures { get; set; }
+        public DbSet<HealthMeasure> HealthMeasures { get; set; }
+        public DbSet<HealthMeasureConfiguration> HealthMeasureConfigurations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,6 +31,16 @@ namespace eMTE.Temperature.DataAccess
             modelBuilder.Entity<TeamUserMap>(entity =>
             {
                 entity.HasIndex(e => new { e.TeamId, e.UserId }).IsUnique();
+            });
+
+            modelBuilder.Entity<DayMeasure>(entity =>
+            {
+                entity.HasIndex(e => new { e.UserId, e.NotedDate }).IsUnique();
+            });
+
+            modelBuilder.Entity<HealthMeasureConfiguration>(entity =>
+            {
+                entity.HasIndex(e => e.OrganizationId).IsUnique();
             });
         }
     }

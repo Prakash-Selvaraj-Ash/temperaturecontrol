@@ -17,6 +17,132 @@ namespace eMTE.Temperature.Migrations
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("eMTE.Temperature.Domain.DayMeasure", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Intime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("NotedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("OutTime")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId");
+
+                    b.HasIndex("UserId", "NotedDate")
+                        .IsUnique();
+
+                    b.ToTable("DayMeasures");
+                });
+
+            modelBuilder.Entity("eMTE.Temperature.Domain.HealthMeasure", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("Cough")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<Guid>("DayMeasureId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("HeatRate")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ImageWithPPE")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("OxygenSaturation")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("RunnyNose")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("ShortnessBreath")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("Sneezing")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<double>("Temperature")
+                        .HasColumnType("double");
+
+                    b.Property<string>("TemperatureUnit")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("UpdateDateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DayMeasureId");
+
+                    b.ToTable("HealthMeasures");
+                });
+
+            modelBuilder.Entity("eMTE.Temperature.Domain.HealthMeasureConfiguration", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("IsCoughMandate")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsHeatRateMandate")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsImageWithPPEMandate")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsOxygenSaturationMandate")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsRunnyNoseMandate")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsShortnessBreathMandate")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsSneezingMandate")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsTemperatureMandate")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("MeasureCount")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("TemperatureUnit")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId")
+                        .IsUnique();
+
+                    b.ToTable("HealthMeasureConfigurations");
+                });
+
             modelBuilder.Entity("eMTE.Temperature.Domain.Organization", b =>
                 {
                     b.Property<Guid>("Id")
@@ -173,6 +299,39 @@ namespace eMTE.Temperature.Migrations
                     b.HasIndex("OrganizationId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("eMTE.Temperature.Domain.DayMeasure", b =>
+                {
+                    b.HasOne("eMTE.Temperature.Domain.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eMTE.Temperature.Domain.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eMTE.Temperature.Domain.HealthMeasure", b =>
+                {
+                    b.HasOne("eMTE.Temperature.Domain.DayMeasure", "DayMeasure")
+                        .WithMany()
+                        .HasForeignKey("DayMeasureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eMTE.Temperature.Domain.HealthMeasureConfiguration", b =>
+                {
+                    b.HasOne("eMTE.Temperature.Domain.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eMTE.Temperature.Domain.Team", b =>

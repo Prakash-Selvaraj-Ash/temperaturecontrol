@@ -13,5 +13,11 @@ namespace eMTE.Temperature.BusinessLayer.Constants
             public const string SecretKey = "my temperature security key";
             public const string PasswordKey = "temperature";
         }
+
+        public class TemperatureUnit
+        {
+            public const string Celcius = "c";
+            public const string Fahrenheit = "f";
+        }
     }
 }

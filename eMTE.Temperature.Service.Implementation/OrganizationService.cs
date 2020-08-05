@@ -16,18 +16,22 @@ namespace eMTE.Temperature.Service.Implementation
         private readonly IAuthenticator _authenticator;
         private readonly IRepository<User> _userRepository;
         private readonly IRepository<Organization> _organizationRepository;
+
         private readonly IEntityService _entityService;
+        private readonly IHealthConfigurationService _healthConfigurationService;
 
         public OrganizationService(
             IAuthenticator authenticator,
             IEntityService entityService,
             IRepository<User> userRepository,
-            IRepository<Organization> organizationRepository)
+            IRepository<Organization> organizationRepository,
+            IHealthConfigurationService healthConfigurationService)
         {
             _authenticator = authenticator;
             _entityService = entityService;
             _userRepository = userRepository;
             _organizationRepository = organizationRepository;
+            _healthConfigurationService = healthConfigurationService;
         }
 
         public async Task RegisterOrganization(CreateOrganization createOrganization, CancellationToken cancellationToken)
@@ -41,8 +45,11 @@ namespace eMTE.Temperature.Service.Implementation
             user.Hash = authModel.Hash;
             user.IsOrganizationAdmin = true;
 
+
             await _organizationRepository.CreateAsync(organization, cancellationToken);
             await _userRepository.CreateAsync(user, cancellationToken);
+
+            await _healthConfigurationService.CreateDefaultConfiguration(organization.Id, cancellationToken);
 
             await _entityService.SaveAsync(cancellationToken);
         }

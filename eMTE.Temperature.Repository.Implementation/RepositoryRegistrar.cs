@@ -11,8 +11,11 @@ namespace eMTE.Temperature.Repository.Implementation
         {
             services.AddTransient<IRepository<User>, UserRepository>();
             services.AddTransient<IRepository<Team>, TeamRepository>();
+            services.AddTransient<IRepository<DayMeasure>, DayMeasureRepository>();
             services.AddTransient<IRepository<TeamUserMap>, TeamUserMapRepository>();
             services.AddTransient<IRepository<Organization>, OrganizationRepository>();
+            services.AddTransient<IRepository<HealthMeasure>, HealthMeasureRepository>();
+            services.AddTransient<IRepository<HealthMeasureConfiguration>, HealthMeasureConfigurationRepository>();
         }
     }
 }

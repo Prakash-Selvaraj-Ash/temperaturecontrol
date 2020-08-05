@@ -17,6 +17,9 @@
     <Folder Include="DTO\Team\Response\" />
     <Folder Include="Constants\" />
     <Folder Include="DTO\User\Response\" />
+    <Folder Include="DTO\HealthMeasure\" />
+    <Folder Include="DTO\HealthMeasure\Request\" />
+    <Folder Include="DTO\HealthMeasure\Response\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
