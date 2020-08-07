@@ -29,8 +29,21 @@ using static eMTE.Temperature.BusinessLayer.Constants.Constants;
 
 namespace eMTE.Temperature
 {
+    public class DbConnectionModel
+    {
+        public string Host { get; set; }
+        public string DataBase { get; set; }
+        public string User { get; set; }
+        public string Password { get; set; }
+        public string Port { get; set; }
+    }
+
+    
+
     public class Startup
     {
+        private readonly string cleverCloudConnSection = "CleverCloud";
+        private readonly string localConnSection = "Local";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -38,15 +51,20 @@ namespace eMTE.Temperature
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
 
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
+#if !DEBUG 
+            var dbConn = Configuration.GetValue<string>($"DbConnectionStrings:{cleverCloudConnSection}");
+#else
+            var dbConn = Configuration.GetValue<string>($"DbConnectionStrings:{localConnSection}");
+#endif
+
             services.AddDbContext<AppDbContext>(builder =>
-                   builder.UseMySql("Server=localhost;user=root;password=17031991AE#;Database=TemperatureControlDB;", sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
+                   builder.UseMySql(dbConn, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
 
             var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Secret.SecretKey));
 
@@ -86,7 +104,6 @@ namespace eMTE.Temperature
             services.AddTransient<IEntityService, EntityService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
