@@ -57,6 +57,20 @@ namespace eMTE.Temperature.Service.Implementation
             };
         }
 
+        public async Task<GetUserDetailResponse> GetUserDetail(Guid id, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.ReadByIdAsync(id, cancellationToken);
+            return user.To<GetUserDetailResponse>();
+        }
+
+        public async Task UpdateUser(UpdateUser updateUser, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.ReadByIdAsync(updateUser.Id, cancellationToken);
+            updateUser.Into(user);
+
+            await _entityService.SaveAsync(cancellationToken);
+        }
+
         private async Task<bool> CanCreateTeam(Guid userId, CancellationToken cancellationToken)
         {
             var currentUser = await _userRepository.ReadByIdAsync(userId, cancellationToken);

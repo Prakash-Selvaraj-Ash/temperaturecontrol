@@ -49,5 +49,23 @@ namespace eMTE.Temperature.AppControllers
             var privileges = await _userService.GetMyPrivileges(userId, cancellationToken);
             return new OkObjectResult(privileges);
         }
+
+        [Authorize]
+        [HttpGet("detail/{userId}")]
+        public async Task<IActionResult> GetUserDetail(Guid userId, CancellationToken cancellationToken = default)
+        {
+            var userDetail = await _userService.GetUserDetail(userId, cancellationToken);
+            return new OkObjectResult(userDetail);
+
+        }
+
+        [Authorize]
+        [HttpPut("update")]
+        public async Task<IActionResult> Update(UpdateUser updateUser, CancellationToken cancellationToken = default)
+        {
+            await _userService.UpdateUser(updateUser, cancellationToken);
+            return Ok();
+
+        }
     }
 }

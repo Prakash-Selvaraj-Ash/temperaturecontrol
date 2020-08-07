@@ -10,5 +10,7 @@ namespace eMTE.Temperature.Service.Contracts
     {
         Task CreateUser(CreateUser createUser, CancellationToken cancellationToken);
         Task<UserPrivilegeResponse> GetMyPrivileges(Guid userId, CancellationToken cancellationToken);
+        Task UpdateUser(UpdateUser updateUser, CancellationToken cancellationToken);
+        Task<GetUserDetailResponse> GetUserDetail(Guid id, CancellationToken cancellationToken);
     }
 }
