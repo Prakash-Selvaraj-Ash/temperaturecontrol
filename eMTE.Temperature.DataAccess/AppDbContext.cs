@@ -18,6 +18,11 @@ namespace eMTE.Temperature.DataAccess
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasIndex(e => e.Email).IsUnique();
+            });
+
             modelBuilder.Entity<Team>(entity =>
             {
                 entity.HasIndex(e => e.Name).IsUnique();

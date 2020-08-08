@@ -20,6 +20,8 @@ namespace eMTE.Temperature.Domain
         public string HeatRate { get; set; }
         public string ImageWithPPE { get; set; }
         [Required]
+        public int SlotNumber { get; set; }
+        [Required]
         public DateTime UpdateDateTime { get; set; }
         [Required]
         public Guid DayMeasureId { get; set; }

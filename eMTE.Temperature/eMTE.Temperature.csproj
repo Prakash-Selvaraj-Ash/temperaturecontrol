@@ -58,5 +58,14 @@
     <ProjectReference Include="..\eMTE.Common.Tools.Implementation\eMTE.Common.Tools.Implementation.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\eMTE.Common.ExcelExport\eMTE.Common.ExcelExport.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\eMTE.Common.Export\eMTE.Common.Export.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>

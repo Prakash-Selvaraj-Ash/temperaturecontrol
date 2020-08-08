@@ -75,6 +75,9 @@ namespace eMTE.Temperature.Migrations
                     b.Property<bool>("ShortnessBreath")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<int>("SlotNumber")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Sneezing")
                         .HasColumnType("tinyint(1)");
 
@@ -259,7 +262,7 @@ namespace eMTE.Temperature.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Hash")
                         .IsRequired()
@@ -295,6 +298,9 @@ namespace eMTE.Temperature.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.HasIndex("OrganizationId");
 

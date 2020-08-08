@@ -22,7 +22,7 @@ namespace eMTE.Temperature.AppControllers
 
         [Authorize]
         [HttpPost("createOrUpdate")]
-        public async Task<IActionResult> CreateOrUpdateHealthMeasure(CreateDayMeasure createDayMeasure, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateOrUpdateHealthMeasure(CreateDayMeasure createDayMeasure, CancellationToken cancellationToken = default)
         {
             await _healthMeasureService.CreateMeasure(createDayMeasure, cancellationToken);
             return Ok();
@@ -31,10 +31,18 @@ namespace eMTE.Temperature.AppControllers
 
         [Authorize]
         [HttpGet("getDayMeasure")]
-        public async Task<IActionResult> GetDayMeasure(DateTime dateTime, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetDayMeasure(DateTime dateTime, CancellationToken cancellationToken = default)
         {
             var measures = await _healthMeasureService.GetDayMeasure(dateTime, cancellationToken);
             return new OkObjectResult(measures);
+        }
+
+        [Authorize]
+        [HttpPut("getExportData")]
+        public async Task<IActionResult> GetExportData(GetExportRequest getExportRequest, CancellationToken cancellationToken = default)
+        {
+            var data = await _healthMeasureService.GetExportRows(getExportRequest.TeamId, getExportRequest.StartDate, getExportRequest.EndDate, cancellationToken);
+            return new OkObjectResult(data);
         }
     }
 }

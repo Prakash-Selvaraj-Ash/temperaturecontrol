@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Common.Tools.Contract"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Common.Tools.Implementation", "..\eMTE.Common.Tools.Implementation\eMTE.Common.Tools.Implementation.csproj", "{45897223-23AF-4195-8261-E3E0679B987A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Common.ExcelExport", "..\eMTE.Common.ExcelExport\eMTE.Common.ExcelExport.csproj", "{C3F26F2F-258E-4735-A063-D0D94F23AAA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMTE.Common.Export", "..\eMTE.Common.Export\eMTE.Common.Export.csproj", "{44A1A88B-69FA-445E-891F-2C5AB8CCD4F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +105,14 @@ Global
 		{45897223-23AF-4195-8261-E3E0679B987A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45897223-23AF-4195-8261-E3E0679B987A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45897223-23AF-4195-8261-E3E0679B987A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F26F2F-258E-4735-A063-D0D94F23AAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F26F2F-258E-4735-A063-D0D94F23AAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F26F2F-258E-4735-A063-D0D94F23AAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F26F2F-258E-4735-A063-D0D94F23AAA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44A1A88B-69FA-445E-891F-2C5AB8CCD4F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44A1A88B-69FA-445E-891F-2C5AB8CCD4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44A1A88B-69FA-445E-891F-2C5AB8CCD4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44A1A88B-69FA-445E-891F-2C5AB8CCD4F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +124,8 @@ Global
 		{32BF9C08-11F2-44ED-81F6-CF4AAE56F641} = {D129D16B-4FF4-4823-A9BB-F6FDB974E2DC}
 		{F31BB308-D536-411E-84B9-B593D93D76D4} = {D129D16B-4FF4-4823-A9BB-F6FDB974E2DC}
 		{45897223-23AF-4195-8261-E3E0679B987A} = {D129D16B-4FF4-4823-A9BB-F6FDB974E2DC}
+		{C3F26F2F-258E-4735-A063-D0D94F23AAA2} = {D129D16B-4FF4-4823-A9BB-F6FDB974E2DC}
+		{44A1A88B-69FA-445E-891F-2C5AB8CCD4F0} = {D129D16B-4FF4-4823-A9BB-F6FDB974E2DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {949C6A6A-5485-4CB8-B58E-B4E4F5D782B4}

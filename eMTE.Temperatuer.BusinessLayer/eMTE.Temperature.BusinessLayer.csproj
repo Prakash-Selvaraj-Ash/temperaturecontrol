@@ -27,5 +27,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eMTE.Temperature.Domain\eMTE.Temperature.Domain.csproj" />
+    <ProjectReference Include="..\eMTE.Common.Export\eMTE.Common.Export.csproj" />
   </ItemGroup>
 </Project>

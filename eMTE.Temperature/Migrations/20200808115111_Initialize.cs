@@ -167,6 +167,7 @@ namespace eMTE.Temperature.Migrations
                     OxygenSaturation = table.Column<string>(nullable: true),
                     HeatRate = table.Column<string>(nullable: true),
                     ImageWithPPE = table.Column<string>(nullable: true),
+                    SlotNumber = table.Column<int>(nullable: false),
                     UpdateDateTime = table.Column<DateTime>(nullable: false),
                     DayMeasureId = table.Column<Guid>(nullable: false)
                 },
@@ -269,6 +270,12 @@ namespace eMTE.Temperature.Migrations
                 name: "IX_TeamUserMaps_TeamId_UserId",
                 table: "TeamUserMaps",
                 columns: new[] { "TeamId", "UserId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
                 unique: true);
 
             migrationBuilder.CreateIndex(

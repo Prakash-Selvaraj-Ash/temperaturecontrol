@@ -5,6 +5,7 @@ namespace eMTE.Temperature.BusinessLayer.DTO.HealthMeasure.Request
     {
         public double Temperature { get; set; }
         public string TemperatureUnit { get; set; }
+        public int SlotNumber { get; set; }
         public bool Cough { get; set; }
         public bool Sneezing { get; set; }
         public bool RunnyNose { get; set; }

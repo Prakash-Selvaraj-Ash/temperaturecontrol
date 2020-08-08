@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using eMTE.Common.Authentication;
 using eMTE.Common.DataAccess;
+using eMTE.Common.ExcelExport;
+using eMTE.Common.Export.ExcelExport;
 using eMTE.Common.Tools.Contract;
 using eMTE.Common.Tools.Implementation;
 using eMTE.Temperature.BusinessLayer;
@@ -97,6 +99,7 @@ namespace eMTE.Temperature
             BusinessRegistrar.Register(services);
 
 
+            services.AddTransient<IExcelExportService, ExcelExportService>();
             services.AddTransient<IDateTimeToolService, DateTimeToolService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
