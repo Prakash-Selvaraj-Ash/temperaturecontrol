@@ -6,6 +6,6 @@ namespace eMTE.Common.Domain
 {
     public interface IWithCode
     {
-        public string Code { get; set; }
+         string Code { get; set; }
     }
 }

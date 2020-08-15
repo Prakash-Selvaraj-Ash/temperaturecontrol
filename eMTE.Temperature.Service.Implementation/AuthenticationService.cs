@@ -29,7 +29,7 @@ namespace eMTE.Temperature.Service.Implementation
 
         public async Task<string> Login(string email, string password, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.Set.SingleAsync(user => user.Email == email, cancellationToken);
+            var user = await _userRepository.Set.SingleAsync(_user => _user.Email == email, cancellationToken);
             if(user == null)
             {
                 throw new AuthenticationException("User not found");
