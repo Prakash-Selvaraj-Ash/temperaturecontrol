@@ -4,5 +4,6 @@ namespace eMTE.Temperature.BusinessLayer.DTO.User.Response
     public class UserPrivilegeResponse
     {
         public bool CanCreateTeam { get; set; }
+        public bool IsOrgAdmin { get; set; }
     }
 }

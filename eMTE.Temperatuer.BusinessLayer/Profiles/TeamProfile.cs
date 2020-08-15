@@ -16,8 +16,8 @@ namespace eMTE.Temperature.BusinessLayer.Profiles
                 .ForMember(dest => dest.OrganizationId, opts => opts.Ignore());
 
             CreateMap<Team, GetTeamResponse>()
+                .ForMember(dest => dest.MembersCount, opts => opts.Ignore())
                 .ForMember(dest => dest.TeamId, opts => opts.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.Name))
                 .ForMember(dest => dest.ManagerId, opts => opts.MapFrom(src => src.TeamManagerId));
                 
         }

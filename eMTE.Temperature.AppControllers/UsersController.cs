@@ -67,5 +67,16 @@ namespace eMTE.Temperature.AppControllers
             return Ok();
 
         }
+
+        [Authorize]
+        [HttpGet("myDeatail")]
+        public async Task<IActionResult> GetMyUserDetail(CancellationToken cancellationToken = default)
+        {
+            var claims = HttpContext.User.Claims;
+            var userId = Guid.Parse(claims.Single(claim => claim.Type == ClaimTypes.NameIdentifier).Value);
+            var userDetail = await _userService.GetUserDetail(userId, cancellationToken);
+            return new OkObjectResult(userDetail);
+
+        }
     }
 }

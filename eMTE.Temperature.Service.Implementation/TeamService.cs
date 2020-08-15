@@ -43,14 +43,12 @@ namespace eMTE.Temperature.Service.Implementation
 
         public async Task<IEnumerable<GetTeamResponse>> GetAllTeams(Guid organizationId, CancellationToken cancellationToken)
         {
-            var teams = await _teamRepository.Set.Where(team => team.OrganizationId == organizationId).ToArrayAsync(cancellationToken);
-            return teams.ToList<GetTeamResponse>();
+            return await GetTeams(_teamRepository.Set.Where(team => team.OrganizationId == organizationId), cancellationToken);
         }
 
         public async Task<IEnumerable<GetTeamResponse>> GetManagerTeams(Guid managerId, CancellationToken cancellationToken)
         {
-            var teams = await _teamRepository.Set.Where(team => team.TeamManagerId == managerId).ToArrayAsync(cancellationToken);
-            return teams.ToList<GetTeamResponse>();
+            return await GetTeams(_teamRepository.Set.Where(team => team.TeamManagerId == managerId), cancellationToken);
         }
 
         public async Task AssignTeam(Guid userId, Guid teamId, CancellationToken cancellationToken)
@@ -84,6 +82,30 @@ namespace eMTE.Temperature.Service.Implementation
             if(mapIdToRemove == null) { return; }
             await _teamUserMapRepository.DeleteByIds<TeamUserMap>(new[] { mapIdToRemove.Id }, cancellationToken);
             await _entityService.SaveAsync(cancellationToken);
+        }
+
+
+        private async Task<IEnumerable<GetTeamResponse>> GetTeams(IQueryable<Team> teamQuery, CancellationToken cancellationToken)
+        {
+            var allTeams =
+                await (from team in teamQuery
+                       join userMap in _teamUserMapRepository.Set
+                       on team.Id equals userMap.TeamId
+
+                       select new
+                       {
+                           team,
+                           userMap
+                       }).ToArrayAsync(cancellationToken);
+
+            return allTeams
+                .GroupBy(teammap => teammap.team.Id)
+                .Select(group =>
+                {
+                    var team = group.First().team.To<GetTeamResponse>();
+                    team.MembersCount = group.Count();
+                    return team;
+                });
         }
     }
 }

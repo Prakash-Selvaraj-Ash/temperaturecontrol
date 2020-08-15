@@ -51,9 +51,11 @@ namespace eMTE.Temperature.Service.Implementation
 
         public async Task<UserPrivilegeResponse> GetMyPrivileges(Guid userId, CancellationToken cancellationToken)
         {
+            var user = await _userRepository.ReadByIdAsync(userId, cancellationToken);
             return new UserPrivilegeResponse
             {
-                CanCreateTeam = await CanCreateTeam(userId, cancellationToken)
+                CanCreateTeam = await CanCreateTeam(user, cancellationToken),
+                IsOrgAdmin = user.IsOrganizationAdmin
             };
         }
 
@@ -71,9 +73,8 @@ namespace eMTE.Temperature.Service.Implementation
             await _entityService.SaveAsync(cancellationToken);
         }
 
-        private async Task<bool> CanCreateTeam(Guid userId, CancellationToken cancellationToken)
+        private async Task<bool> CanCreateTeam(User currentUser, CancellationToken cancellationToken)
         {
-            var currentUser = await _userRepository.ReadByIdAsync(userId, cancellationToken);
             if (currentUser.IsOrganizationAdmin) { return true; }
 
             var adminTeamMembersAsyncResult =
