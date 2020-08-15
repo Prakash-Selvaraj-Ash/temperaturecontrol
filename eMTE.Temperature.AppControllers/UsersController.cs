@@ -69,7 +69,7 @@ namespace eMTE.Temperature.AppControllers
         }
 
         [Authorize]
-        [HttpGet("myDeatail")]
+        [HttpGet("myDetail")]
         public async Task<IActionResult> GetMyUserDetail(CancellationToken cancellationToken = default)
         {
             var claims = HttpContext.User.Claims;

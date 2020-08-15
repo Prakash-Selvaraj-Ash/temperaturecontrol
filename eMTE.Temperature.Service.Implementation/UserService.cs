@@ -23,11 +23,14 @@ namespace eMTE.Temperature.Service.Implementation
         private readonly IRepository<Team> _teamRepository;
         private readonly IRepository<TeamUserMap> _teamUserMapRepository;
 
+        private readonly ITeamService _teamService;
+
         public UserService(
             IRepository<TeamUserMap> teamUserMapRepository,
             IRepository<Team> teamRepository,
             IRepository<User> userRepository,
             IAuthenticator authenticator,
+            ITeamService teamService,
             IEntityService entityService)
         {
 
@@ -36,17 +39,28 @@ namespace eMTE.Temperature.Service.Implementation
             _userRepository = userRepository;
             _authenticator = authenticator;
             _entityService = entityService;
+            _teamService = teamService;
         }
 
         public async Task CreateUser(CreateUser createUser, CancellationToken cancellationToken)
         {
             var domainUser = createUser.To<User>();
+            var team = await _teamRepository.ReadByIdAsync(createUser.TeamId, cancellationToken);
 
-            var authModel = _authenticator.Create(Secret.PasswordKey, domainUser.Password);
-            domainUser.Hash = authModel.Hash;
+            using (var transaction = _entityService.GetOrBeginTransaction())
+            {
+                domainUser.OrganizationId = team.OrganizationId;
 
-            await _userRepository.CreateAsync(domainUser, cancellationToken);
-            await _entityService.SaveAsync(cancellationToken);
+                var authModel = _authenticator.Create(Secret.PasswordKey, domainUser.Password);
+                domainUser.Hash = authModel.Hash;
+
+                var createdUser = (await _userRepository.CreateAsync(domainUser, cancellationToken)).Entity;
+
+                await _teamService.AssignTeam(createdUser.Id, createUser.TeamId, cancellationToken);
+
+                await transaction.CommitAsync(cancellationToken);
+                await _entityService.SaveAsync(cancellationToken);
+            }
         }
 
         public async Task<UserPrivilegeResponse> GetMyPrivileges(Guid userId, CancellationToken cancellationToken)
@@ -90,7 +104,7 @@ namespace eMTE.Temperature.Service.Implementation
 
             var adminTeamMembers = await adminTeamMembersAsyncResult.ToArrayAsync(cancellationToken);
 
-            return adminTeamMembers.Contains(userId);
+            return adminTeamMembers.Contains(currentUser.Id);
         }
     }
 }
