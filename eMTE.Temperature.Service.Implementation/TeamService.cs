@@ -105,7 +105,7 @@ namespace eMTE.Temperature.Service.Implementation
                 .Select(group =>
                 {
                     var team = group.First().team.To<GetTeamResponse>();
-                    team.MembersCount = group.Count();
+                    team.MembersCount = group.Count(mem => mem.userMap != null);
                     return team;
                 });
         }
