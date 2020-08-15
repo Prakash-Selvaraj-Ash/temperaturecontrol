@@ -15,7 +15,7 @@ namespace eMTE.Common.Authentication
 
         public string GetClaimIdentifierValue(string identifier)
         {
-            var claim = _httpContextAccessor.HttpContext.User.Claims.Single(claim => claim.Type == identifier);
+            var claim = _httpContextAccessor.HttpContext.User.Claims.Single(cl => cl.Type == identifier);
             return claim.Value;
         }
 

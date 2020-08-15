@@ -3,9 +3,9 @@ namespace eMTE.Common.Domain
 {
     public interface IWithAuditFields
     {
-        public Guid CreatedById { get; set; }
-        public DateTime CreatedTime { get; set; }
-        public Guid? ModifiedById { get; set; }
-        public DateTime? ModifiedTime { get; set; }
+         Guid CreatedById { get; set; }
+         DateTime CreatedTime { get; set; }
+         Guid? ModifiedById { get; set; }
+         DateTime? ModifiedTime { get; set; }
     }
 }

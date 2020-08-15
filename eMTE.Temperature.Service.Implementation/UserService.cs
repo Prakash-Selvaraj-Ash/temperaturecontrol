@@ -90,7 +90,7 @@ namespace eMTE.Temperature.Service.Implementation
 
             var adminTeamMembers = await adminTeamMembersAsyncResult.ToArrayAsync(cancellationToken);
 
-            return adminTeamMembers.Contains(userId);
+            return adminTeamMembers.Contains(currentUser.Id);
         }
     }
 }

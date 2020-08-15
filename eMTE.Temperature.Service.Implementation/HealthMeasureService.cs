@@ -276,7 +276,7 @@ namespace eMTE.Temperature.Service.Implementation
                     Intime = r.First().dayMeasure.Intime,
                     OutTime = r.First().dayMeasure.OutTime,
                     NotedDate = r.First().dayMeasure.NotedDate,
-                    HealthMeasures = r.Select(r => r.healthMeasure).ToList<GetHealthMeasure>()
+                    HealthMeasures = r.Select(_r => _r.healthMeasure).ToList<GetHealthMeasure>()
                 });
 
             return response.FirstOrDefault();
