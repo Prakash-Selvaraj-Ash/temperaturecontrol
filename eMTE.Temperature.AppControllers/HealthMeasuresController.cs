@@ -44,5 +44,13 @@ namespace eMTE.Temperature.AppControllers
             var data = await _healthMeasureService.GetExportRows(getExportRequest.TeamId, getExportRequest.StartDate, getExportRequest.EndDate, cancellationToken);
             return new OkObjectResult(data);
         }
+
+        [Authorize]
+        [HttpPut("generateReport")]
+        public async Task<IActionResult> GenerateExcel(GetExportRequest getExportRequest, CancellationToken cancellationToken = default)
+        {
+            var data = await _healthMeasureService.Export(getExportRequest.TeamId, getExportRequest.StartDate, getExportRequest.EndDate, cancellationToken);
+            return new OkObjectResult(data);
+        }
     }
 }
