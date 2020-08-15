@@ -90,7 +90,9 @@ namespace eMTE.Temperature.Service.Implementation
             var allTeams =
                 await (from team in teamQuery
                        join userMap in _teamUserMapRepository.Set
-                       on team.Id equals userMap.TeamId
+                       on team.Id equals userMap.TeamId into userMaps
+
+                       from userMap in userMaps.DefaultIfEmpty()
 
                        select new
                        {
