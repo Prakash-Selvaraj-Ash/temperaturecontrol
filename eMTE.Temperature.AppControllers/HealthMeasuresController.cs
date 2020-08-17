@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using eMTE.Temperature.BusinessLayer.DTO.HealthMeasure.Request;
@@ -50,7 +51,8 @@ namespace eMTE.Temperature.AppControllers
         public async Task<IActionResult> GenerateExcel(GetExportRequest getExportRequest, CancellationToken cancellationToken = default)
         {
             var data = await _healthMeasureService.Export(getExportRequest.TeamId, getExportRequest.StartDate, getExportRequest.EndDate, cancellationToken);
-            return new OkObjectResult(data);
+            var fileName = $"{new DateTime()}_Health_Tracker";
+            return File(data, "application/octet-stream", fileName);
         }
     }
 }
