@@ -17,5 +17,6 @@ namespace eMTE.Temperature.BusinessLayer.DTO.User.Response
         public bool AlreadyInfected { get; set; }
         public DateTime? InfectedFrom { get; set; }
         public DateTime? InfectedTo { get; set; }
+        public Guid TeamId { get; set; }
     }
 }
