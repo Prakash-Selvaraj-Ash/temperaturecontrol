@@ -44,11 +44,19 @@ namespace eMTE.Temperature.DataAccess.Services
 
         private void ConsiderSetAuditFields()
         {
-            var entries = _context.ChangeTracker.Entries().Where(entry => entry.Entity is IWithAuditFields);
+            var entries = _context.ChangeTracker.Entries()
+                .Where(entry =>
+                    entry.Entity is IWithAuditFields &&
+                    (entry.State == Microsoft.EntityFrameworkCore.EntityState.Added ||
+                    entry.State == Microsoft.EntityFrameworkCore.EntityState.Modified));
             
             if (!entries.Any()) { return;  }
 
-            var userId = Guid.Parse(_userResolver.GetUserId());
+            string claimUserId = _userResolver.TryGetUserId();
+
+            if(string.IsNullOrWhiteSpace(claimUserId)) { return; }
+
+            var userId = Guid.Parse(claimUserId);
             foreach (var entry in entries)
             {
                 var auditFieldEntity = entry.Entity as IWithAuditFields;

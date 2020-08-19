@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using eMTE.Common.Export.ExcelExport;
 using eMTE.Common.Export.ExcelExport.DTO;
 using System.Collections.Generic;
+using eMTE.Temperature.BusinessLayer.DTO.User.Response;
 
 namespace eMTE.Temperature.Service.Implementation
 {
@@ -104,12 +105,12 @@ namespace eMTE.Temperature.Service.Implementation
                 .Select(group => new ExportContext
                 {
                     User = group.First().User,
-                    Days = group
+                    Days = group.Where(g => g.DayMeasure != null)
                         .GroupBy(g => g.DayMeasure.Id)
                         .Select(gDate => new MeasureContext
                         {
                             Day = gDate.First().DayMeasure,
-                            HealthMeasures = gDate.Select(measure => measure.HealthMeasure)
+                            HealthMeasures = gDate.Select(measure => measure.HealthMeasure).Where(hm => hm != null)
                         })
                 });
 
@@ -199,16 +200,20 @@ namespace eMTE.Temperature.Service.Implementation
 
                 join dayMeasure in _dayMeasureRepository.Set
                     .Where(measure => measure.NotedDate.Date >= startDate.Date && measure.NotedDate.Date <= endDate.Date)
-                on teamUserMap.UserId equals dayMeasure.UserId
+                on teamUserMap.UserId equals dayMeasure.UserId into dayMeasures
+
+                from day in dayMeasures.DefaultIfEmpty()
 
                 join healthMeasure in _healthMeasureRepository.Set
-                on dayMeasure.Id equals healthMeasure.DayMeasureId
+                on day.Id equals healthMeasure.DayMeasureId into healthMeasures
+
+                from measure in healthMeasures.DefaultIfEmpty()
 
                 select new ExportDbContext
                 {
                     User = teamUserMap.User,
-                    HealthMeasure = healthMeasure,
-                    DayMeasure = dayMeasure
+                    HealthMeasure = measure,
+                    DayMeasure = day
                 };
 
             var dbResult = await asyncResult.ToArrayAsync(cancellationToken);
@@ -314,6 +319,29 @@ namespace eMTE.Temperature.Service.Implementation
             var rows = await GetInnerExport(teamId, startDate, endDate, cancellationToken);
             var result = rows.ToList<ExportRow>();
             return result;
+        }
+
+        public async Task<IEnumerable<GetDashBoardData>> GetDashBoardData(Guid teamId, DateTime dateTime, CancellationToken cancellationToken)
+        {
+            var exportContext = await GetExportContexts(teamId, dateTime, dateTime, cancellationToken);
+            var groupedResult = exportContext
+                .GroupBy(res => res.User.Id)
+                .Select(group => new GetDashBoardData
+                {
+                    User = group.First().User.To<GetUserResponse>(),
+                    DayMeasure = group.Where(g => g.DayMeasure != null)
+                        .GroupBy(g => g.DayMeasure.Id)
+                        .Select(r => new GetDayMeasure
+                        {
+                            Id = r.Key,
+                            Intime = r.First().DayMeasure.Intime,
+                            OutTime = r.First().DayMeasure.OutTime,
+                            NotedDate = r.First().DayMeasure.NotedDate,
+                            HealthMeasures = r.Select(_r => _r.HealthMeasure).ToList<GetHealthMeasure>()
+                        }).FirstOrDefault()
+                });
+
+            return groupedResult;
         }
     }
 }

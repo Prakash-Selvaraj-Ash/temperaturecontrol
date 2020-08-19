@@ -13,5 +13,6 @@ namespace eMTE.Temperature.Service.Contracts
         Task CreateMeasure(CreateDayMeasure createDayMeasure, CancellationToken cancellationToken);
         Task<byte[]> Export(Guid teamId, DateTime startDate, DateTime endDate, CancellationToken cancellationToken);
         Task<IEnumerable<ExportRow>> GetExportRows(Guid teamId, DateTime startDate, DateTime endDate, CancellationToken cancellationToken);
+        Task<IEnumerable<GetDashBoardData>> GetDashBoardData(Guid teamId, DateTime dateTime, CancellationToken cancellationToken);
     }
 }

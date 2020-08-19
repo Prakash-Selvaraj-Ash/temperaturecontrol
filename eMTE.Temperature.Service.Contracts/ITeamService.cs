@@ -16,5 +16,6 @@ namespace eMTE.Temperature.Service.Contracts
         Task AssignTeam(Guid userId, Guid teamId, CancellationToken cancellationToken);
         Task<IEnumerable<GetUserResponse>> GetMembers(Guid teamId, CancellationToken cancellationToken);
         Task RemoveMember(Guid teamId, Guid userId, CancellationToken cancellationToken);
+        Task<GetTeamData> GetTeamData(Guid teamId, CancellationToken cancellationToken);
     }
 }

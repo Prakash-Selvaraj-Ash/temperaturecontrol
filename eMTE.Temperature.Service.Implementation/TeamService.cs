@@ -109,5 +109,15 @@ namespace eMTE.Temperature.Service.Implementation
                     return team;
                 });
         }
+
+        public async Task<GetTeamData> GetTeamData(Guid teamId, CancellationToken cancellationToken)
+        {
+            var team = await _teamRepository.Set.Include(team => team.Organization).SingleOrDefaultAsync(team => team.Id == teamId, cancellationToken);
+            return new GetTeamData
+            {
+                TeamName = team.Name,
+                OrganizationName = team.Organization.Name
+            };
+        }
     }
 }

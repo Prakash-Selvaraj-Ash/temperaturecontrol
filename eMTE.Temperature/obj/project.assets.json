@@ -10232,7 +10232,7 @@
       "outputPath": "/Users/prakashselvaraj/thor/dotnet_dev/temperature_control/eMTE.Temperature/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/prakashselvaraj/.nuget/NuGet/NuGet.Config"
+        "/Users/prakashselvaraj/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -10344,7 +10344,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.401/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.302/RuntimeIdentifierGraph.json"
       }
     }
   }

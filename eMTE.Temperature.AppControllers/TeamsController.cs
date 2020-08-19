@@ -83,5 +83,13 @@ namespace eMTE.Temperature.AppControllers
             var members = await _teamService.GetMembers(teamId, cancellationToken);
             return new OkObjectResult(members);
         }
+
+        [AllowAnonymous]
+        [HttpGet("getTeam/{teamId}")]
+        public async Task<IActionResult> GetTeamData(Guid teamId, CancellationToken cancellationToken = default)
+        {
+            var team = await _teamService.GetTeamData(teamId, cancellationToken);
+            return new OkObjectResult(team);
+        }
     }
 }

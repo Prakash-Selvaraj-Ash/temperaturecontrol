@@ -51,8 +51,19 @@ namespace eMTE.Temperature.AppControllers
         public async Task<IActionResult> GenerateExcel(GetExportRequest getExportRequest, CancellationToken cancellationToken = default)
         {
             var data = await _healthMeasureService.Export(getExportRequest.TeamId, getExportRequest.StartDate, getExportRequest.EndDate, cancellationToken);
-            var fileName = $"{new DateTime()}_Health_Tracker";
-            return File(data, "application/octet-stream", fileName);
+            var fileName = string.Format("{0}-{1}-{2}-Health_Tracker.xlsx", getExportRequest.TeamId, getExportRequest.StartDate, getExportRequest.EndDate);
+            return File(
+                        data,
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        fileName);
+        }
+
+        [Authorize]
+        [HttpPut("getDashBoardData")]
+        public async Task<IActionResult> GetDashBoardData([FromBody]GetDashBoardRequest getDashBoardRequest, CancellationToken cancellationToken = default)
+        {
+            var data = await _healthMeasureService.GetDashBoardData(getDashBoardRequest.TeamId, getDashBoardRequest.DateTime, cancellationToken);
+            return new OkObjectResult(data);
         }
     }
 }

@@ -24,5 +24,11 @@ namespace eMTE.Common.Authentication
             var userId = _httpContextAccessor.HttpContext.User.Claims.Single(claim => claim.Type == ClaimTypes.NameIdentifier);
             return userId.Value;
         }
+
+        public string TryGetUserId()
+        {
+            var userId = _httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
+            return userId?.Value;
+        }
     }
 }
