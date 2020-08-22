@@ -46,7 +46,7 @@ echo Docker login to Heroku
 echo ==============================================================
 echo.
 echo.
-docker login --username=moganvig90@gmail.com --password=48096ba2-45fb-48fc-a8be-b1ee0728d570 registry.heroku.com
+docker login --username= --password= registry.heroku.com
 
 echo.
 echo.
