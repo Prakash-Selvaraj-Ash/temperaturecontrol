@@ -13,7 +13,8 @@ namespace eMTE.Temperature.BusinessLayer.Profiles
         {
             CreateMap<CreateUser, User>()
                 .ForMember(dest => dest.Id, opts => opts.MapFrom(src => Guid.NewGuid()));
-            CreateMap<User, GetUserDetailResponse>();
+            CreateMap<User, GetUserDetailResponse>()
+                .ForMember(dest => dest.TeamId, opts => opts.Ignore());
             CreateMap<CreateOrganization, User>()
                 .ForMember(dest => dest.Name, opts => opts.MapFrom(src => src.UserName))
                 .ForMember(dest => dest.Id, opts => opts.MapFrom(src => Guid.NewGuid()));

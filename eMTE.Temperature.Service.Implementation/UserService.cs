@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using eMTE.Common.Authentication;
 using eMTE.Common.Repository.Contracts;
-using eMTE.Temperature.BusinessLayer.DTO.Team.Response;
 using eMTE.Temperature.BusinessLayer.DTO.User.Request;
 using eMTE.Temperature.BusinessLayer.DTO.User.Response;
 using eMTE.Temperature.BusinessLayer.Extensions;
@@ -77,10 +76,10 @@ namespace eMTE.Temperature.Service.Implementation
         public async Task<GetUserDetailResponse> GetUserDetail(Guid id, CancellationToken cancellationToken)
         {
             var user = await _userRepository.ReadByIdAsync(id, cancellationToken);
-            var team = await GetTeamInfo(user, cancellationToken);
+            var teamId = await GetTeamId(user, cancellationToken);
 
             var resultUser = user.To<GetUserDetailResponse>();
-            resultUser.TeamId = team.TeamId;
+            resultUser.TeamId = teamId;
 
             return resultUser;
         }
@@ -113,14 +112,13 @@ namespace eMTE.Temperature.Service.Implementation
             return adminTeamMembers.Contains(currentUser.Id);
         }
 
-        private async Task<GetTeamResponse> GetTeamInfo(User currentUser, CancellationToken cancellationToken)
+        private async Task<Guid> GetTeamId(User currentUser, CancellationToken cancellationToken)
         {
             var team = await _teamUserMapRepository.Set
-                .Include(map => map.Team)
                 .FirstOrDefaultAsync(map => map.UserId == currentUser.Id, cancellationToken);
 
-            if(team == null) { return null; }
-            return team.To<GetTeamResponse>();
+            if(team == null) { return Guid.Empty; }
+            return team.Id;
         }
     }
 }
