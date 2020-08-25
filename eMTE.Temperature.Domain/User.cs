@@ -5,7 +5,7 @@ using eMTE.Common.Domain;
 
 namespace eMTE.Temperature.Domain
 {
-    public class User : IDomain, IWithId
+    public class User : IDomain, IWithId, IWithCode
     {
         public Guid Id { get; set; }
         [Required]
@@ -13,8 +13,8 @@ namespace eMTE.Temperature.Domain
         [ForeignKey("OrganizationId")]
         public virtual Organization Organization { get; set; }
         public bool IsOrganizationAdmin { get; set; }
-        [Required]
         public string Email { get; set; }
+        public string Code { get; set; }
         [Required]
         public string Password { get; set; }
         [Required]

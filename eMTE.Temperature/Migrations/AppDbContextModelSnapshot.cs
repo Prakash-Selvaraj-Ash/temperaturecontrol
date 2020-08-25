@@ -254,6 +254,9 @@ namespace eMTE.Temperature.Migrations
                     b.Property<bool>("AlreadyInfected")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime(6)");
 
@@ -261,7 +264,6 @@ namespace eMTE.Temperature.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Hash")

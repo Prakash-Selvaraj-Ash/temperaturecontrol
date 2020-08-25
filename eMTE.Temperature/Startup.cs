@@ -59,7 +59,7 @@ namespace eMTE.Temperature
 
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-#if !DEBUG 
+#if DEBUG 
             var dbConn = Configuration.GetValue<string>($"DbConnectionStrings:{cleverCloudConnSection}");
 #else
             var dbConn = Configuration.GetValue<string>($"DbConnectionStrings:{localConnSection}");

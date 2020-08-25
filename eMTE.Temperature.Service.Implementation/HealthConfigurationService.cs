@@ -27,7 +27,7 @@ namespace eMTE.Temperature.Service.Implementation
             var configuration = new HealthMeasureConfiguration
             {
                 OrganizationId = organizationId,
-                MeasureCount = 3,
+                MeasureCount = 2,
                 TemperatureUnit = Constants.TemperatureUnit.Celcius,
                 IsTemperatureMandate = true,
             };

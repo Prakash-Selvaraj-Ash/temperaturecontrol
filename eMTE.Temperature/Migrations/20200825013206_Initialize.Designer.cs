@@ -9,7 +9,7 @@ using eMTE.Temperature.DataAccess;
 namespace eMTE.Temperature.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200808115111_Initialize")]
+    [Migration("20200825013206_Initialize")]
     partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -256,6 +256,9 @@ namespace eMTE.Temperature.Migrations
                     b.Property<bool>("AlreadyInfected")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime(6)");
 
@@ -263,7 +266,6 @@ namespace eMTE.Temperature.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Hash")

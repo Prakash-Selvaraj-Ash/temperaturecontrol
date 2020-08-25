@@ -133,9 +133,11 @@ namespace eMTE.Temperature.Service.Implementation
                 var cells = new List<Column>();
                 var row = new Row { };
                 var userNameCell = new Column(1, 1, res.User.Name, false);
+                var userEmpIdCell = new Column(2, 2, res.User.Code, false);
+                var dobCell = new Column(3, 3, res.User.DateOfBirth.ToLongDateString(), false);
                 var daysCell = daysToGenerate.SelectMany((day, index) =>
                 {
-                    var startIndex = (index * slotCount) + 2;
+                    var startIndex = (index * slotCount) + 4;
                     var existingDayMeasure = res.Days.FirstOrDefault(dbDate => dbDate.Day.NotedDate.Date.Equals(day.Date));
                     if (existingDayMeasure != null)
                     {
@@ -160,6 +162,8 @@ namespace eMTE.Temperature.Service.Implementation
                     }
                 }).ToArray();
                 cells.Add(userNameCell);
+                cells.Add(userEmpIdCell);
+                cells.Add(dobCell);
                 cells.AddRange(daysCell);
 
                 row.Cells = cells;
@@ -225,8 +229,10 @@ namespace eMTE.Temperature.Service.Implementation
             var rows = new List<Row>();
 
             var mainColumns = new List<Column>();
-            mainColumns.Add(new Column(1, 1, "UserName"));
-            var currentColumnCount = 2;
+            mainColumns.Add(new Column(1, 1, "User name"));
+            mainColumns.Add(new Column(2, 2, "Emp Id"));
+            mainColumns.Add(new Column(3, 3, "Date of birth"));
+            var currentColumnCount = 4;
             foreach (var day in daysToGenerate)
             {
                 var endIndex = currentColumnCount + slotCount - 1;
