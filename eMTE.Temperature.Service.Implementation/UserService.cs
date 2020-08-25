@@ -115,25 +115,12 @@ namespace eMTE.Temperature.Service.Implementation
 
         private async Task<GetTeamResponse> GetTeamInfo(User currentUser, CancellationToken cancellationToken)
         {
-            GetTeamResponse result = null;
+            var team = await _teamUserMapRepository.Set
+                .Include(map => map.Team)
+                .FirstOrDefaultAsync(map => map.UserId == currentUser.Id, cancellationToken);
 
-            var teams = await _teamService.GetAllTeams(currentUser.OrganizationId, cancellationToken);
-
-            if (teams.Any())
-            {
-                foreach (GetTeamResponse team in teams)
-                {
-                    var members = await _teamService.GetMembers(team.TeamId, cancellationToken);
-
-                    if (members.Any(r => r.Id == currentUser.Id))
-                    {
-                        result = team;
-                        break;
-                    }
-                }
-            }
-
-            return result;
+            if(team == null) { return null; }
+            return team.To<GetTeamResponse>();
         }
     }
 }
